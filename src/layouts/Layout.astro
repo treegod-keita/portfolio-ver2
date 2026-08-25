@@ -1,5 +1,11 @@
 ---
 import "@/styles/global.css";
+
+interface Props {
+    className?: string;
+}
+
+const { className } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,7 +18,7 @@ import "@/styles/global.css";
         <meta name="generator" content={Astro.generator} />
         <title>Astro Basics</title>
     </head>
-    <body>
+    <body class={className}>
         <slot />
     </body>
 </html>
