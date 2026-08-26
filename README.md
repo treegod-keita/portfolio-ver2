@@ -4,10 +4,13 @@
 
 Astroでの実装練習を兼ねて制作している、自身のポートフォリオサイトです。
 
-## 2. デモURL
+## 2. URL
 
-[https://example.com](https://example.com)
-<!-- 実際のデプロイ先が決まり次第、URLを更新します -->
+### 本番
+[https://portfolio-ver2.treegod0205.workers.dev/](https://portfolio-ver2.treegod0205.workers.dev/)
+
+### プレビュー
+[https://develop-portfolio-ver2.treegod0205.workers.dev/](https://develop-portfolio-ver2.treegod0205.workers.dev/)
 
 ## 3. 使用技術
 
