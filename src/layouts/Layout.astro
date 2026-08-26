@@ -2,6 +2,7 @@
 import "../styles/global.css";
 // import Header from "@/components/header.astro";
 // import Footer from "@components/astro/common/Footer.astro";
+import { Font } from "astro:assets";
 
 interface Props {
     title?: string;
@@ -75,13 +76,17 @@ const ogImageURL = ogImage.startsWith("http")
         <meta name="twitter:title" content={pageTitle} />
         {description && <meta name="twitter:description" content={description} />}
         <meta name="twitter:image" content={ogImageURL} />
+        <Font cssVariable="--font-barlow" preload />
     </head>
     <body class:list={pageClass} data-page={pageId}>
         <!-- <Header /> -->
         <main>
             <div
                 id="swup"
-                class:list={["h-screen w-full overflow-x-hidden overflow-y-scroll", className]}
+                class:list={[
+                    "font-barlow h-screen w-full overflow-x-hidden overflow-y-scroll",
+                    className,
+                ]}
             >
                 <slot />
             </div>
