@@ -1,7 +1,10 @@
 {
     "name": "portfolio-ver2",
-    "compatibility_date": "2026-08-20", // デプロイする日に更新してください
+    "compatibility_date": "2026-08-20",
+    "main": "worker/index.ts",
     "assets": {
         "directory": "./dist",
+        "binding": "ASSETS",
+        "run_worker_first": true,
     },
 }
