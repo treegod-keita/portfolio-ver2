@@ -3,10 +3,33 @@
 @import "./text.css";
 @import "./theme.css";
 
+@theme {
+    /* テキストサイズ */
+    --text-h1-pc: 7.5rem; /* 120px */
+    --text-h1-sp: 4rem; /* 64px */
+    --text-h2-pc: 5rem; /* 80px */
+    --text-h2-sp: 3rem; /* 48px */
+    --text-h3-pc: 1.75rem; /* 28px */
+    --text-h3-sp: 1.5rem; /* 24px */
+    --text-h4-pc: 1.5rem; /* 24px */
+    --text-h4-sp: 1.25rem; /* 20px */
+    --text-h5-pc: 1.25rem; /* 20px */
+    --text-h5-sp: 1.125rem; /* 18px */
+    --text-link-pc: 1rem; /* 16px */
+    --text-link-sp: 1.125rem; /* 18px */
+    --text-theme-pc: 0.875rem; /* 14px */
+    --text-theme-sp: 1rem; /* 16px */
+    --text-cap-pc: 0.875rem; /* 14px */
+    --text-cap-sp: 0.75rem; /* 12px */
+
+    /* フォントファミリー */
+    --font-barlow: var(--font-barlow), "Yu Gothic", sans-serif;
+}
+
 html {
     touch-action: manipulation;
 
-    font-size: clamp(calc(16px / 1366 * 834), calc((16 / 1366) * 100vw), calc(16px / 1366 * 1536));
+    font-size: clamp(calc(16px / 1440 * 834), calc((16 / 1440) * 100vw), calc(16px / 1440 * 1536));
 
     /* tablet, smartphone */
     @media (max-width: 768px) {
@@ -16,8 +39,16 @@ html {
 }
 
 @layer base {
+    *,
+    *::before,
+    *::after {
+        transition-property: background-color, color, border-color, fill, stroke;
+        transition-timing-function: ease;
+        transition-duration: 500ms; /* ここが速さの調整箇所 */
+    }
+
     body {
-        @apply font-family-sans text-black;
+        @apply font-barlow leading-[1.2] text-black;
     }
 
     h1,

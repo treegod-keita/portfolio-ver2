@@ -1,0 +1,60 @@
+---
+import Links from "@/data/Links";
+import Modes from "@/data/Modes";
+import Snses from "@/data/Sns";
+
+// 3つ＋2つに分割
+const rowModes = [Modes.slice(0, 3), Modes.slice(3, 5)];
+---
+
+<header class="fixed top-0 left-0 w-full">
+    <div class="px-7.5 py-4.5 md:px-0 md:pt-8 md:pb-3">
+        <div class="w-full text-white md:grid md:grid-cols-[repeat(24,minmax(0,1fr))]">
+            <a href="/" class="md:ml-7.5">KS</a>
+            <ul class="group col-start-9 flex gap-x-8">
+                {
+                    Links.map((link) => (
+                        <li class="text-link group-has-[li:hover]:not-[&:hover]:text-other-text uppercase font-stretch-extra-condensed duration-200">
+                            <a href={link.href}>{link.text}</a>
+                        </li>
+                    ))
+                }
+            </ul>
+            <div class="group col-start-16 flex flex-col gap-y-4.5 md:gap-y-1">
+                {
+                    rowModes.map((row) => (
+                        <div class="flex flex-col gap-y-4.5 md:flex-row md:gap-x-1">
+                            {row.map((mode, index) => (
+                                <>
+                                    <button
+                                        type="button"
+                                        data-theme-btn={mode.theme}
+                                        class="text-theme text-secondary-text group-has-[button:hover]:not-[&:hover]:text-other-text uppercase"
+                                    >
+                                        {mode.theme}
+                                    </button>
+                                    {index < row.length - 1 && <span class="opacity-50">/</span>}
+                                </>
+                            ))}
+                        </div>
+                    ))
+                }
+            </div>
+            <ul class="flex gap-x-4 md:col-end-25 md:mr-7.5 md:justify-end">
+                {
+                    Snses.map((el) => (
+                        <li class="w-fit">
+                            <a
+                                href={el.href}
+                                target={el.target}
+                                rel={el.target ? "noopener noreferrer" : undefined}
+                            >
+                                {el.text}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </div>
+</header>
