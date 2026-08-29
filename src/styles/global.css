@@ -1,39 +1,7 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
-@theme {
-    /* 色の初期化 */
-    --color-*: initial;
-
-    --color-white-400: #f3f3f3;
-    --color-gray-300: #c9c9c9;
-    --color-gray-200: #e1e1e1;
-    --color-gray-100: #e5e5e5;
-    --color-black-800: #212121;
-    --color-black-700: #282828;
-    --color-black-600: #2f2f2f;
-    --color-black-500: #383838;
-
-    --text-h1-pc: 7.5rem; /* 120px */
-    --text-h1-sp: 4rem; /* 64px */
-    --text-h2-pc: 5rem; /* 80px */
-    --text-h2-sp: 3rem; /* 48px */
-    --text-h3-pc: 1.75rem; /* 28px */
-    --text-h3-sp: 1.5rem; /* 24px */
-    --text-h4-pc: 1.5rem; /* 24px */
-    --text-h4-sp: 1.25rem; /* 20px */
-    --text-h5-pc: 1.25rem; /* 20px */
-    --text-h5-sp: 1.125rem; /* 18px */
-    --text-link-pc: 1rem; /* 16px */
-    --text-link-sp: 1.125rem; /* 18px */
-    --text-theme-pc: 0.875rem; /* 14px */
-    --text-theme-sp: 1rem; /* 16px */
-    --text-cap-pc: 0.875rem; /* 14px */
-    --text-cap-sp: 0.75rem; /* 12px */
-
-    --font-barlow: var(--font-barlow), "Yu Gothic", sans-serif;
-}
+@import "./text.css";
+@import "./theme.css";
 
 html {
     touch-action: manipulation;
