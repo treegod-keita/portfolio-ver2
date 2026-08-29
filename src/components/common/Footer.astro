@@ -9,12 +9,12 @@ const { position } = Astro.props;
 
 const positionList = {
     static: "mt-40",
-    absolute: "absolute left-0 bottom-5 z-5",
+    absolute: "absolute left-0 bottom-7.5 z-5",
 };
 ---
 
 <footer class:list={["w-full", positionList[position]]}>
     <div class="flex w-full justify-start md:px-7.5">
-        <p class="text-cap text-white">@Keita Sakaki</p>
+        <p class="text-cap">@Keita Sakaki</p>
     </div>
 </footer>

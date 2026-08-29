@@ -48,7 +48,7 @@ html {
     }
 
     body {
-        @apply font-barlow leading-[1.2] text-black;
+        @apply text-primary-text font-barlow leading-[1.2];
     }
 
     h1,
