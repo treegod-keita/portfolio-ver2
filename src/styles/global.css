@@ -26,6 +26,10 @@
     --font-barlow: var(--font-barlow), "Yu Gothic", sans-serif;
 }
 
+@utility transition-primary {
+    @apply duration-700 ease-in-out;
+}
+
 html {
     touch-action: manipulation;
 

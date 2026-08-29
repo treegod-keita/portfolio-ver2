@@ -2,7 +2,7 @@ import type { Sns } from "@/types/Sns";
 
 const Snses: Sns[] = [
     {
-        text: "x",
+        text: "X",
         href: "https://x.com/treegodkeita",
         target: "_blank",
     },
