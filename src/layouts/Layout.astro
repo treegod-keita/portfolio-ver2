@@ -88,15 +88,17 @@ const ogImageURL = ogImage.startsWith("http")
             <div
                 id="swup"
                 class:list={[
-                    "font-barlow bg-primary-back relative z-10 h-screen w-full overflow-x-hidden overflow-y-scroll",
+                    "font-barlow bg-primary-back relative z-10 h-screen w-full overflow-y-scroll overscroll-none",
                     className,
                 ]}
             >
-                <slot />
-                <Lines />
+                <div>
+                    <slot />
+                    <Footer position={footerPosition} />
+                    <Lines />
+                </div>
             </div>
         </main>
-        <Footer position={footerPosition} />
     </body>
 </html>
 
