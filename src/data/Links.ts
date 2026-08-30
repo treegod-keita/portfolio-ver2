@@ -7,11 +7,11 @@ const Links: Link[] = [
     },
     {
         text: "works",
-        href: "./works/",
+        href: "/works/",
     },
     {
         text: "blog",
-        href: "./blog/",
+        href: "/blog/",
     },
 ];
 
