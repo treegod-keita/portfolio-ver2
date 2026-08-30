@@ -52,7 +52,7 @@ html {
     }
 
     body {
-        @apply text-primary-text font-barlow leading-[1.2];
+        @apply text-primary-text font-barlow bg-primary-back leading-[1.2];
     }
 
     h1,
