@@ -97,6 +97,18 @@ export const initPageTransition = (): Swup => {
     });
 
     swup.hooks.on("content:replace", () => {
+        // Header は #swup の外側にあり swup に差し替えられないため、
+        // data-page-item / data-opening-item 属性を手動で現在のページに同期する。
+        // initPageScripts() より先に行う必要がある。initPageScripts() が呼ぶ
+        // setOpeningAnimation は [data-opening-item] をこの時点でクエリするため、
+        // 後で同期すると Header がアニメーション対象に含まれずアニメーションが動かない。
+        // const header = document.querySelector<HTMLElement>("header");
+        // if (header) {
+        //     const pageId = getPageId();
+        //     header.dataset.pageItem = pageId;
+        //     header.dataset.openingItem = pageId;
+        // }
+
         initPageScripts();
 
         // SwupParallelPlugin により visit:end までは旧コンテナ（.is-previous-container）が

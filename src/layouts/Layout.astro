@@ -86,7 +86,7 @@ const ogImageURL = ogImage.startsWith("http")
         <Font cssVariable="--font-barlow" preload />
     </head>
     <body class:list={pageClass} data-page={pageId}>
-        <Header page={page} />
+        <Header />
         <main>
             <div
                 id="swup"
@@ -97,9 +97,9 @@ const ogImageURL = ogImage.startsWith("http")
             >
                 <div class="h-full w-full">
                     <slot />
-                    <Footer position={footerPosition} page={page} />
-                    <Lines page={page} />
+                    <Footer position={footerPosition} />
                 </div>
+                <Lines page={page} />
             </div>
         </main>
     </body>

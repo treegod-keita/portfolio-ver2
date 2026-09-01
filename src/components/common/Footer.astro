@@ -1,21 +1,25 @@
 ---
 import type { FooterPosition } from "@/types/Footer";
-import type { Page } from "@/types/Page";
 
 interface Props {
     position: FooterPosition;
-    page?: Page;
 }
 
-const { position, page } = Astro.props;
+const { position } = Astro.props;
 
 const positionList = {
     static: "mt-40 pb-7.5",
     absolute: "absolute left-0 bottom-7.5 z-30",
 };
+
+const pathname = Astro.url.pathname;
+const isTop = pathname === "/";
 ---
 
-<footer class:list={["w-full", positionList[position]]} data-page-item={page}>
+<footer
+    class:list={["w-full", positionList[position], isTop && "opacity-0"]}
+    data-page-item="footer"
+>
     <div class="flex w-full justify-start md:px-7.5">
         <p class="text-cap">&copy; Keita Sakaki</p>
     </div>

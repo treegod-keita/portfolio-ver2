@@ -8,7 +8,7 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<div class="pointer-events-none fixed top-0 left-0 flex h-screen w-full justify-evenly">
+<div class="pointer-events-none fixed top-0 left-0 z-10 flex h-screen w-full justify-evenly">
     {
         Array.from({ length: 3 }).map((_, index) => (
             <div

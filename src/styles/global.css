@@ -81,7 +81,7 @@ html {
 
     /* 初期値 */
     /* opacity-0 */
-    [data-page-item="home"] {
+    [data-opening-item="home"] {
         opacity: 0;
         pointer-events: none;
     }

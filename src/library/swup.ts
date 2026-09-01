@@ -15,7 +15,7 @@ const swupOption = (): Partial<Options> => {
         animationSelector: false, // CSSアニメーションの完了待機を無効化
         animateHistoryBrowsing: true, // ブラウザの戻る・進むボタンを押したときもアニメーションを実行
         plugins: [
-            new SwupBodyClassPlugin(),
+            new SwupBodyClassPlugin({ attributes: ["data-page"] }),
             new SwupParallelPlugin(),
             new SwupHeadPlugin({ persistAssets: true }),
         ],
