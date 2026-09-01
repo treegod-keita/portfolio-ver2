@@ -5,6 +5,7 @@ import Footer from "@/components/common/Footer.astro";
 import Lines from "@/components/common/Lines.astro";
 import { Font } from "astro:assets";
 import type { FooterPosition } from "@/types/Footer";
+import type { Page } from "@/types/Page";
 
 interface Props {
     title?: string;
@@ -29,6 +30,7 @@ interface Props {
     /** Android ホーム画面アイコンのパス */
     androidTouchIcon?: string;
     footerPosition?: FooterPosition;
+    page?: Page;
 }
 
 const {
@@ -46,6 +48,7 @@ const {
     appleTouchIcon = "/apple-touch-icon.png",
     androidTouchIcon = "/android-touch-icon.png",
     footerPosition = "static",
+    page,
 } = Astro.props;
 
 const pageTitle = title ? `${title} | ${siteName}` : `${siteName}`;
@@ -83,7 +86,7 @@ const ogImageURL = ogImage.startsWith("http")
         <Font cssVariable="--font-barlow" preload />
     </head>
     <body class:list={pageClass} data-page={pageId}>
-        <Header />
+        <Header page={page} />
         <main>
             <div
                 id="swup"
@@ -92,10 +95,10 @@ const ogImageURL = ogImage.startsWith("http")
                     className,
                 ]}
             >
-                <div>
+                <div class="h-full w-full">
                     <slot />
-                    <Footer position={footerPosition} />
-                    <Lines />
+                    <Footer position={footerPosition} page={page} />
+                    <Lines page={page} />
                 </div>
             </div>
         </main>
@@ -103,7 +106,7 @@ const ogImageURL = ogImage.startsWith("http")
 </html>
 
 <script>
-    import { initPageTransition } from "@/script/app";
+    import { initPageTransition } from "@/scripts/app";
     initPageTransition();
 </script>
 

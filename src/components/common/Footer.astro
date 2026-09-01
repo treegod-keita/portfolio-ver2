@@ -1,11 +1,13 @@
 ---
 import type { FooterPosition } from "@/types/Footer";
+import type { Page } from "@/types/Page";
 
 interface Props {
     position: FooterPosition;
+    page?: Page;
 }
 
-const { position } = Astro.props;
+const { position, page } = Astro.props;
 
 const positionList = {
     static: "mt-40 pb-7.5",
@@ -13,8 +15,8 @@ const positionList = {
 };
 ---
 
-<footer class:list={["w-full", positionList[position]]}>
+<footer class:list={["w-full", positionList[position]]} data-page-item={page}>
     <div class="flex w-full justify-start md:px-7.5">
-        <p class="text-cap">@Keita Sakaki</p>
+        <p class="text-cap">&copy; Keita Sakaki</p>
     </div>
 </footer>

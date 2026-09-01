@@ -2,7 +2,7 @@ import type { Link } from "@/types/Link";
 
 const Links: Link[] = [
     {
-        text: "top",
+        text: "home",
         href: "/",
     },
     {

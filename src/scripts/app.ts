@@ -2,8 +2,8 @@
 import { gsap } from "gsap";
 import type { Visit } from "swup";
 import { IS_WAIT_CLASS, SWUP_CONTAINER, swupOption, Swup } from "@/library/swup";
-import { pageTransitionAnimation } from "@/script/modules/animation";
-// import layoutChange from "@/scripts/page/blog/layoutChange";
+import { pageTransitionAnimation } from "@/scripts/modules/animation";
+import setOpeningAnimation from "@/scripts/page/home/opening";
 
 let cleanupExample: (() => void) | null = null;
 
@@ -13,7 +13,7 @@ const getPageId = (): string => {
 
 /** ページ固有スクリプトを追加するときはここに import してエントリを追加する */
 const PAGE_INITS: Record<string, () => (() => void) | void> = {
-    // blog: layoutChange,
+    home: setOpeningAnimation,
 };
 
 let cleanupPageScripts: (() => void) | null = null;
