@@ -42,7 +42,11 @@ const pageTransitionAnimation = async (): Promise<void> => {
         gsap.to(next, { y: "0%", duration: 1.4, ease: "power4.inOut" }),
     ]);
 
-    gsap.set(next, { position: "", top: "", left: "", width: "", y: "", zIndex: "" });
+    // gsap.set(next, { y: "" }) のように個別プロパティを空文字に戻しても
+    // transform: translate(0px, 0px) が inline style に残ってしまうことがある。
+    // transform が none 以外だと子要素の position: fixed の基準がこの要素になってしまい
+    // （Lines コンポーネントなどが画面に固定されなくなる）、clearProps で完全に除去する。
+    gsap.set(next, { clearProps: "all" });
     spacer.remove();
     window.scrollTo(0, 0); // アニメーション完了後にリセット
 };

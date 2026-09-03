@@ -21,6 +21,8 @@
     --text-theme-sp: 1rem; /* 16px */
     --text-cap-pc: 0.875rem; /* 14px */
     --text-cap-sp: 0.75rem; /* 12px */
+    --text-reverse-pc: 0.875rem; /* 14px */
+    --text-reverse-sp: 1rem; /* 16px */
 
     /* フォントファミリー */
     --font-barlow: var(--font-barlow), "Yu Gothic", sans-serif;

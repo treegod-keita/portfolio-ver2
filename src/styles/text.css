@@ -22,3 +22,6 @@
 @utility text-cap {
     @apply text-cap-sp md:text-cap-pc;
 }
+@utility text-reverse {
+    @apply text-reverse-sp md:text-reverse-pc;
+}
