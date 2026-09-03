@@ -1,11 +1,10 @@
 // swup.ts
 import { gsap } from "gsap";
 import type { Visit } from "swup";
+import setLenis from "@/library/lenis";
 import { IS_WAIT_CLASS, SWUP_CONTAINER, swupOption, Swup } from "@/library/swup";
 import { pageTransitionAnimation } from "@/scripts/modules/animation";
 import setOpeningAnimation from "@/scripts/page/home/opening";
-
-let cleanupExample: (() => void) | null = null;
 
 const getPageId = (): string => {
     return document.body.dataset.page ?? "";
@@ -24,6 +23,17 @@ const initPageScripts = (): void => {
     const init = PAGE_INITS[getPageId()];
     const cleanup = init?.();
     cleanupPageScripts = cleanup ?? null;
+};
+
+let cleanupLenis: (() => void) | null = null;
+
+/**
+ * swup が #swup 要素を丸ごと差し替えるため、Lenis の wrapper 参照も
+ * ページ遷移のたびに新しい #swup を対象に作り直す必要がある。
+ */
+const initLenis = (): void => {
+    cleanupLenis?.();
+    cleanupLenis = setLenis();
 };
 
 /** Swup コンテナ内のインラインスクリプトを再実行して astro-island を再ハイドレートする */
@@ -63,11 +73,11 @@ const destroyPageTransition = (): void => {
     gsap.killTweensOf(SWUP_CONTAINER);
     document.removeEventListener("click", preventClickWhileTransitioning, true);
 
-    cleanupExample?.();
-    cleanupExample = null;
-
     cleanupPageScripts?.();
     cleanupPageScripts = null;
+
+    cleanupLenis?.();
+    cleanupLenis = null;
 
     swupInstance?.destroy();
     swupInstance = null;
@@ -86,6 +96,7 @@ export const initPageTransition = (): Swup => {
     // 初回ロード時のみ実行したい処理はここに追加する
     // cleanupExample = setupExample() ?? null;
     initPageScripts();
+    initLenis();
 
     document.addEventListener("click", preventClickWhileTransitioning, true);
 
@@ -110,6 +121,7 @@ export const initPageTransition = (): Swup => {
         // }
 
         initPageScripts();
+        initLenis();
 
         // SwupParallelPlugin により visit:end までは旧コンテナ（.is-previous-container）が
         // DOM に残り続けるため、単に "#swup script" で選択すると旧ページのスクリプトも
