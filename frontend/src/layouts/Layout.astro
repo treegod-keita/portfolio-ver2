@@ -1,0 +1,120 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/common/Header.astro";
+import Footer from "@/components/common/Footer.astro";
+import Lines from "@/components/common/Lines.astro";
+import { Font } from "astro:assets";
+import type { FooterPosition } from "@/types/Footer";
+import type { Page } from "@/types/Page";
+
+interface Props {
+    title?: string;
+    description?: string;
+    siteName?: string;
+    className?: string;
+    pageClass?: string;
+    /** scripts/pages/ のスクリプトを呼び分けるためのページ識別子（例: "home" | "about"） */
+    pageId?: string;
+    /** OGP・Twitter Card 用サムネイル画像のパス（例: /images/ogp.png） */
+    ogImage?: string;
+    /** og:type。トップページは "website"、記事ページは "article" など */
+    ogType?: "website" | "article";
+    /** noindex にしたいページで true を渡す */
+    noindex?: boolean;
+    /** canonical URL を明示したい場合に渡す。省略時は現在の URL を使用 */
+    canonical?: string;
+    /** ICO ファビコンのパス */
+    faviconIco?: string;
+    /** iOS ホーム画面アイコンのパス */
+    appleTouchIcon?: string;
+    /** Android ホーム画面アイコンのパス */
+    androidTouchIcon?: string;
+    footerPosition?: FooterPosition;
+    page?: Page;
+}
+
+const {
+    title,
+    description = "",
+    siteName = "portfolio-ver2",
+    pageClass,
+    className,
+    pageId,
+    ogImage = "/ogp.png",
+    ogType = "website",
+    noindex = false,
+    canonical,
+    faviconIco = "/favicon.ico",
+    appleTouchIcon = "/apple-touch-icon.png",
+    androidTouchIcon = "/android-touch-icon.png",
+    footerPosition = "static",
+    page,
+} = Astro.props;
+
+const pageTitle = title ? `${title} | ${siteName}` : `${siteName}`;
+const canonicalURL =
+    canonical ?? new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString();
+const ogImageURL = ogImage.startsWith("http")
+    ? ogImage
+    : new URL(ogImage, Astro.site ?? Astro.url.origin).toString();
+---
+
+<!doctype html>
+<html lang="ja" data-theme="mono">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href={faviconIco} />
+        <link rel="apple-touch-icon" href={appleTouchIcon} />
+        <link rel="icon" type="image/png" href={androidTouchIcon} sizes="192x192" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+        {description && <meta name="description" content={description} />}
+        <link rel="canonical" href={canonicalURL} />
+        {noindex && <meta name="robots" content="noindex, nofollow" />}
+        <meta property="og:type" content={ogType} />
+        <meta property="og:title" content={pageTitle} />
+        {description && <meta property="og:description" content={description} />}
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:image" content={ogImageURL} />
+        <meta property="og:locale" content="ja_JP" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        {description && <meta name="twitter:description" content={description} />}
+        <meta name="twitter:image" content={ogImageURL} />
+        <Font cssVariable="--font-barlow" preload />
+    </head>
+    <body class:list={pageClass} data-page={pageId}>
+        <Header />
+        <main>
+            <div
+                id="swup"
+                class:list={[
+                    "font-barlow bg-primary-back relative z-10 h-screen w-full overflow-y-scroll overscroll-none",
+                    className,
+                ]}
+            >
+                <div class="h-full w-full">
+                    <slot />
+                    <Footer position={footerPosition} />
+                </div>
+                <Lines page={page} />
+            </div>
+        </main>
+    </body>
+</html>
+
+<script>
+    import { initPageTransition } from "@/scripts/app";
+    initPageTransition();
+</script>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>

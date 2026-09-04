@@ -1,0 +1,27 @@
+@utility text-h1 {
+    @apply text-h1-sp md:text-h1-pc;
+}
+@utility text-h2 {
+    @apply text-h2-sp md:text-h2-pc;
+}
+@utility text-h3 {
+    @apply text-h3-sp md:text-h3-pc;
+}
+@utility text-h4 {
+    @apply text-h4-sp md:text-h4-pc;
+}
+@utility text-h5 {
+    @apply text-h5-sp md:text-h5-pc;
+}
+@utility text-link {
+    @apply text-link-sp md:text-link-pc;
+}
+@utility text-theme {
+    @apply text-theme-sp md:text-theme-pc;
+}
+@utility text-cap {
+    @apply text-cap-sp md:text-cap-pc;
+}
+@utility text-reverse {
+    @apply text-reverse-sp md:text-reverse-pc;
+}

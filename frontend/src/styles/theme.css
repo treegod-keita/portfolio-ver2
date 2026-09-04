@@ -1,0 +1,51 @@
+@theme {
+    /* 色の初期化 */
+    /* --color-*: initial; */
+
+    /* 白 */
+    --color-white: #f3f3f3;
+    --color-white-other: #595959;
+
+    /* グレー */
+    --color-gray-300: #c9c9c9;
+    --color-gray-200: #e1e1e1;
+    --color-gray-100: #e5e5e5;
+
+    /* 黒 */
+    --color-black: #212121;
+    --color-black-700: #282828;
+    --color-black-600: #2f2f2f;
+    --color-black-500: #383838;
+
+    /* 役割 */
+    --color-primary-text: var(--color-white);
+    --color-secondary-text: var(--color-gray-100);
+    --color-tertiary-text: var(--color-gray-200);
+    --color-primary-back: var(--color-black);
+    --color-secondary-back: var(--color-black-700);
+    --color-tertiary-back: var(--color-black-600);
+    --color-other-text: var(--color-white-other);
+}
+
+/* デフォルトテーマ(元々の色コードをそのまま移動) */
+:root,
+[data-theme="night"] {
+    --color-primary-text: var(--color-white);
+    --color-secondary-text: var(--color-gray-100);
+    --color-tertiary-text: var(--color-gray-200);
+    --color-primary-back: var(--color-black);
+    --color-secondary-back: var(--color-black-700);
+    --color-tertiary-back: var(--color-black-600);
+    --color-other-text: var(--color-white-other);
+}
+
+/* 他のテーマ(テーマ名・色コードは後で変更してください) */
+[data-theme="day"] {
+    --color-primary-text: var(--color-black);
+    --color-secondary-text: var(--color-black-700);
+    --color-tertiary-text: var(--color-black-600);
+    --color-primary-back: var(--color-white);
+    --color-secondary-back: var(--color-gray-100);
+    --color-tertiary-back: var(--color-gray-200);
+    --color-other-text: var(--color-white-other);
+}

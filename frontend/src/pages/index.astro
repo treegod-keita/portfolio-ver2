@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+    className="flex h-screen w-full flex-col items-center justify-center gap-y-2"
+    footerPosition="absolute"
+    page="home"
+    pageId="home"
+>
+    <div
+        class="absolute right-5 bottom-5 flex flex-col gap-y-1.5 md:right-7.5 md:bottom-7.5 md:gap-y-2"
+        data-opening-item="home"
+    >
+        <h1 class="text-h2">KEITA SAKAKI</h1>
+        <p class="text-h3 self-end">DEVELOPER</p>
+    </div>
+    <div class="fixed top-1/2 left-1/2 w-fit -translate-1/2 overflow-hidden">
+        <p class="text-h3 translate-y-full" data-text="intro">KEITA SAKAKI</p>
+    </div>
+</Layout>

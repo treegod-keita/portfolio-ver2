@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@import "./text.css";
+@import "./theme.css";
+
+@theme {
+    /* テキストサイズ */
+    --text-h1-pc: 7.5rem; /* 120px */
+    --text-h1-sp: 4rem; /* 64px */
+    --text-h2-pc: 5rem; /* 80px */
+    --text-h2-sp: 3rem; /* 48px */
+    --text-h3-pc: 1.75rem; /* 28px */
+    --text-h3-sp: 1.5rem; /* 24px */
+    --text-h4-pc: 1.5rem; /* 24px */
+    --text-h4-sp: 1.25rem; /* 20px */
+    --text-h5-pc: 1.25rem; /* 20px */
+    --text-h5-sp: 1.125rem; /* 18px */
+    --text-link-pc: 1rem; /* 16px */
+    --text-link-sp: 1.125rem; /* 18px */
+    --text-theme-pc: 0.875rem; /* 14px */
+    --text-theme-sp: 1rem; /* 16px */
+    --text-cap-pc: 0.875rem; /* 14px */
+    --text-cap-sp: 0.75rem; /* 12px */
+    --text-reverse-pc: 0.875rem; /* 14px */
+    --text-reverse-sp: 1rem; /* 16px */
+
+    /* フォントファミリー */
+    --font-barlow: var(--font-barlow), "Yu Gothic", sans-serif;
+}
+
+@utility transition-primary {
+    @apply duration-700 ease-in-out;
+}
+
+html {
+    touch-action: manipulation;
+
+    font-size: clamp(calc(16px / 1440 * 834), calc((16 / 1440) * 100vw), calc(16px / 1440 * 1536));
+
+    /* tablet, smartphone */
+    @media (max-width: 768px) {
+        /* 16px(1rem) / 375px(アートボードサイズ) * 100 */
+        font-size: clamp(1px, calc((16 / 375) * 100vw), calc(16px / 375 * 600));
+    }
+}
+
+@layer base {
+    *,
+    *::before,
+    *::after {
+        transition-property: background-color, color, border-color, fill, stroke;
+        transition-timing-function: ease;
+        transition-duration: 500ms; /* ここが速さの調整箇所 */
+    }
+
+    body {
+        @apply text-primary-text font-barlow bg-primary-back leading-[1.2];
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a {
+        @apply antialiased;
+        font-feature-settings: "palt" 1;
+    }
+
+    a {
+        @apply text-current no-underline;
+    }
+
+    img {
+        @apply h-auto w-full object-cover;
+    }
+
+    button {
+        @apply cursor-pointer;
+    }
+
+    /* 初期値 */
+    /* opacity-0 */
+    [data-opening-item="home"] {
+        opacity: 0;
+        pointer-events: none;
+    }
+}

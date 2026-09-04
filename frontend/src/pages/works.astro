@@ -1,0 +1,41 @@
+---
+import type { ImageMetadata } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import Inner from "@/components/common/Inner.astro";
+import Item from "@/components/works/Item.astro";
+import { WorksList } from "@/data/worksList";
+
+const images = Object.values(
+    import.meta.glob<{ default: ImageMetadata }>("@/assets/images/works/works_*.jpg", {
+        eager: true,
+    }),
+).map((mod) => mod.default);
+
+const viewTypeBtn = "transition-opacity duration-500 hover:opacity-100";
+---
+
+<Layout page="works" pageId="works">
+    <Inner className="relative z-20 md:mt-25 md:mt-40">
+        <h1 class="text-h1 font-bold">Works</h1>
+        <ul class="mt-15 grid grid-cols-1 gap-y-16 md:mt-30 md:grid-cols-3 md:gap-x-14 md:gap-y-29">
+            {
+                WorksList.map((item, index) => (
+                    <Item num={index + 1} src={images[index]} title={item.title} info={item.info} />
+                ))
+            }
+        </ul>
+        <ul class="text-link fixed top-37.5 left-7.5 flex flex-col md:gap-y-3">
+            <li>
+                <button data-view-type="slider" class:list={["opacity-30", viewTypeBtn]}
+                    >SLIDER</button
+                >
+            </li>
+            <li>
+                <button
+                    data-view-type="grid"
+                    class:list={["pointer-events-none opacity-90", viewTypeBtn]}>GRID</button
+                >
+            </li>
+        </ul>
+    </Inner>
+</Layout>
