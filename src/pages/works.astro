@@ -10,6 +10,8 @@ const images = Object.values(
         eager: true,
     }),
 ).map((mod) => mod.default);
+
+const viewTypeBtn = "transition-opacity duration-500 hover:opacity-100";
 ---
 
 <Layout page="works" pageId="works">
@@ -21,6 +23,19 @@ const images = Object.values(
                     <Item num={index + 1} src={images[index]} title={item.title} info={item.info} />
                 ))
             }
+        </ul>
+        <ul class="text-link fixed top-37.5 left-7.5 flex flex-col md:gap-y-3">
+            <li>
+                <button data-view-type="slider" class:list={["opacity-30", viewTypeBtn]}
+                    >SLIDER</button
+                >
+            </li>
+            <li>
+                <button
+                    data-view-type="grid"
+                    class:list={["pointer-events-none opacity-100", viewTypeBtn]}>GRID</button
+                >
+            </li>
         </ul>
     </Inner>
 </Layout>
